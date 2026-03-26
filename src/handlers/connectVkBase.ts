@@ -11,7 +11,7 @@ export function connectVkBase(vk: any){
         const senderId = context.senderId;
         if (text.toLowerCase().startsWith("+привязать")) {
             const parts = text.split(/\s+/);
-            const pubgId = parts[1];s
+            const pubgId = parts[1];
             if (!pubgId) {
                 return context.send("Укажи PUBG ID. Пример: +привязать 51020303");
             }
