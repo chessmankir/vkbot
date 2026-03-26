@@ -2,14 +2,12 @@ import {pool} from "./db";
 
 export async function getDescriptionByVkId(vkId: number) {
     const query = `
-    SELECT id, pubg_id, nickname, description
+    SELECT *
     FROM clan_members
     WHERE vk_id = $1
     LIMIT 1
   `;
-
     const result = await pool.query(query, [vkId]);
-
     if (result.rows.length === 0) {
         return {
             ok: false,
@@ -18,16 +16,5 @@ export async function getDescriptionByVkId(vkId: number) {
     }
 
     const member = result.rows[0];
-
-    if (!member.description || !member.description.trim()) {
-        return {
-            ok: false,
-            message: "У этого пользователя описание пока не заполнено",
-        };
-    }
-
-    return {
-        ok: true,
-        member,
-    };
+    return member;
 }

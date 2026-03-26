@@ -1,4 +1,4 @@
-import { pool } from "../db/db";
+import { pool } from "./db";
 
 export async function linkVkToPubg(pubgId: string, vkId: number) {
     const findQuery = `
@@ -7,7 +7,7 @@ export async function linkVkToPubg(pubgId: string, vkId: number) {
     WHERE pubg_id = $1
     LIMIT 1
   `;
-
+    console.log("vk:", vkId);
     const found = await pool.query(findQuery, [pubgId]);
 
     if (found.rows.length === 0) {
