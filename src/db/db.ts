@@ -21,7 +21,7 @@ export const pool = new Pool({
         const client = await pool.connect();
         const result = await client.query("SELECT NOW()");
         client.release();
-    } catch (err: Error) {
+    } catch (err: unknown) {
         console.error("❌ DB connection failed:", err);
     }
 })();

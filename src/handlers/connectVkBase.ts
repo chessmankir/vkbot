@@ -14,13 +14,13 @@ export function connectVkBase(vk: any){
             const pubgId = parts[1];
             if (!pubgId) {
                 return context.send("Укажи PUBG ID. Пример: +привязать 51020303");
-            }
+            }git 
             if (!/^\d+$/.test(pubgId)) {
                 return context.send("PUBG ID должен состоять только из цифр");
             }
             const result = await linkVkToPubg(pubgId, senderId);
             if (!result.ok) {
-                return context.send(result.message);
+                return context.send(result.message ?? "");
             }
 
             return context.send(

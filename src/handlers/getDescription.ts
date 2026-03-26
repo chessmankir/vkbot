@@ -1,7 +1,7 @@
 import {getDescriptionByVkId} from "../db/getDescriptionDb";
 import {MessageContext} from "vk-io";
 
-function es(text: string): MessageContext {
+function es(text: string): string {
     if (!text) return '—';
     return text
         .replace(/_/g, '\\_')
